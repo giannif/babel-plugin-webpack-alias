@@ -11,7 +11,9 @@ function getConfig(configPath, findConfig) {
     } else {
         conf = require(findUp.sync(configPath));
     }
-
+    if (conf && conf.__esModule) {
+        conf = conf.default
+    }
     return conf;
 }
 
